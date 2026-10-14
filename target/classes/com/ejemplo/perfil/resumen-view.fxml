@@ -1,31 +1,520 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+    DECLARACIÓN XML
+    ---------------
+
+    Esta línea indica que el archivo utiliza XML.
+
+    version="1.0":
+        Especifica la versión del lenguaje XML.
+
+    encoding="UTF-8":
+        Establece la codificación de caracteres.
+
+        Permite representar correctamente caracteres
+        como á, é, í, ó, ú, ñ y otros símbolos.
+
+    FXML es un lenguaje basado en XML que permite
+    describir interfaces gráficas de JavaFX.
+
+    En lugar de construir todos los controles
+    mediante instrucciones Java, los declaramos
+    utilizando etiquetas.
+-->
+
+
+<!--
+    IMPORTACIÓN DE Insets
+    ---------------------
+
+    Esta instrucción permite utilizar la clase:
+
+    javafx.geometry.Insets
+
+    Insets representa los espacios interiores
+    que pueden aplicarse a un contenedor.
+
+    La utilizaremos para establecer el padding
+    del VBox principal.
+
+    Esta instrucción es propia de FXML.
+-->
 <?import javafx.geometry.Insets?>
+
+
+<!--
+    IMPORTACIÓN DE CONTROLES JAVAFX
+    -------------------------------
+
+    Importamos las clases del paquete:
+
+    javafx.scene.control
+
+    El asterisco (*) permite utilizar las clases
+    de ese paquete sin escribir sus nombres completos.
+
+    En esta pantalla necesitamos principalmente:
+
+    - Label:
+        Para mostrar información.
+
+    - Button:
+        Para crear el botón Cerrar.
+
+    La importación con * no incluye automáticamente
+    los subpaquetes.
+-->
 <?import javafx.scene.control.*?>
+
+
+<!--
+    IMPORTACIÓN DE VBox
+    -------------------
+
+    VBox significa Vertical Box.
+
+    Es un contenedor que organiza sus elementos
+    verticalmente, uno debajo de otro.
+
+    En esta ventana contendrá:
+
+    1. El título del resumen.
+    2. El nombre del usuario.
+    3. El correo electrónico.
+    4. Las preferencias.
+    5. El botón Cerrar.
+-->
 <?import javafx.scene.layout.VBox?>
 
+
+<!--
+    CONTENEDOR PRINCIPAL: VBox
+    -------------------------
+
+    VBox es el elemento raíz de este archivo FXML.
+
+    Todos los controles de la segunda pantalla
+    estarán contenidos dentro de él.
+
+    Vamos a estudiar sus atributos.
+
+
+    xmlns:fx="http://javafx.com/fxml"
+    --------------------------------
+
+    Declara el espacio de nombres de FXML.
+
+    Permite utilizar atributos especiales como:
+
+    - fx:controller
+    - fx:id
+
+    El prefijo fx identifica características
+    propias de FXML.
+
+    La dirección no implica que JavaFX tenga
+    que conectarse a Internet.
+
+
+    fx:controller="com.ejemplo.perfil.ResumenController"
+    ---------------------------------------------------
+
+    Indica qué clase Java controla esta pantalla.
+
+    En este caso:
+
+    com.ejemplo.perfil.ResumenController
+
+    FXMLLoader utiliza esta información para
+    crear una instancia del controlador y conectar
+    los elementos definidos mediante fx:id.
+
+    Es importante que el paquete y el nombre
+    de la clase coincidan exactamente.
+
+    El controlador debe estar accesible para
+    el mecanismo de carga de FXML.
+
+
+    alignment="CENTER"
+    ------------------
+
+    Indica que los elementos hijos del VBox
+    se alinearán en el centro.
+
+    En este caso, CENTER significa:
+
+    - Centrado horizontal.
+    - Centrado vertical.
+
+    El orden de los controles seguirá siendo
+    de arriba abajo.
+
+
+    spacing="20"
+    ------------
+
+    Establece una separación vertical de
+    20 píxeles entre elementos consecutivos.
+
+    Por ejemplo:
+
+    - Entre el título y el nombre.
+    - Entre el nombre y el correo.
+    - Entre el correo y las preferencias.
+    - Entre las preferencias y el botón.
+
+    IMPORTANTE:
+
+    spacing es diferente de padding.
+
+    spacing:
+        Separación entre elementos hijos.
+
+    padding:
+        Separación entre el contenido
+        y los bordes del contenedor.
+
+
+    DIFERENCIA CON LA PRIMERA VENTANA
+    ---------------------------------
+
+    En perfil-view.fxml utilizábamos:
+
+    spacing="15"
+
+    Aquí utilizamos:
+
+    spacing="20"
+
+    Por tanto, los controles del resumen
+    estarán algo más separados.
+-->
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.ejemplo.perfil.ResumenController"
       alignment="CENTER"
       spacing="20">
 
+
+    <!--
+        PROPIEDAD padding
+        ----------------
+
+        padding establece el espacio interior
+        del contenedor VBox.
+
+        La etiqueta <padding> permite asignar
+        un objeto Insets a esta propiedad.
+
+        En Java, sería equivalente a escribir:
+
+        vbox.setPadding(
+            new Insets(30, 40, 30, 40)
+        );
+
+        El orden de los cuatro argumentos es:
+
+        1. Arriba.
+        2. Derecha.
+        3. Abajo.
+        4. Izquierda.
+
+        Estos espacios ayudan a que los controles
+        no queden pegados a los bordes de la ventana.
+    -->
     <padding>
-        <Insets top="30" right="40" bottom="30" left="40"/>
+
+        <!--
+            OBJETO Insets
+            -------------
+
+            top="30":
+                Espacio interior superior de 30 píxeles.
+
+            right="40":
+                Espacio interior derecho de 40 píxeles.
+
+            bottom="30":
+                Espacio interior inferior de 30 píxeles.
+
+            left="40":
+                Espacio interior izquierdo de 40 píxeles.
+
+            En conjunto, el contenido tendrá
+            30 píxeles de separación arriba y abajo,
+            y 40 píxeles a izquierda y derecha.
+        -->
+        <Insets top="30"
+                right="40"
+                bottom="30"
+                left="40"/>
+
     </padding>
 
+
+    <!--
+        TÍTULO DE LA SEGUNDA VENTANA
+        ---------------------------
+
+        Label:
+            Crea una etiqueta de texto.
+
+        text="Resumen del perfil":
+            Define el texto inicial que se mostrará.
+
+        styleClass="titulo":
+            Asigna una clase CSS llamada titulo.
+
+        Si tenemos una hoja de estilos con:
+
+        .titulo {
+            -fx-font-size: 24px;
+            -fx-font-weight: bold;
+        }
+
+        esta etiqueta utilizará ese estilo,
+        siempre que la hoja CSS esté asociada
+        a la escena o a un elemento adecuado.
+
+        No necesita fx:id porque el controlador
+        no accede directamente a este título.
+    -->
     <Label text="Resumen del perfil"
            styleClass="titulo"/>
 
+
+    <!--
+        ETIQUETA DEL NOMBRE
+        ------------------
+
+        Esta etiqueta mostrará el nombre
+        introducido en la primera ventana.
+
+        Vamos a estudiar sus atributos.
+
+
+        fx:id="lblNombre"
+        -----------------
+
+        Identifica este Label dentro del FXML.
+
+        FXMLLoader utilizará este identificador
+        para conectarlo con el atributo:
+
+        @FXML
+        private Label lblNombre;
+
+        definido en ResumenController.java.
+
+        El identificador debe coincidir
+        exactamente con el nombre del atributo.
+
+        IMPORTANTE:
+
+        fx:id no es simplemente un nombre visual.
+
+        Permite que el controlador tenga
+        una referencia al objeto Label.
+
+
+        text="Nombre:"
+        --------------
+
+        Es el texto inicial de la etiqueta.
+
+        Cuando se carga el FXML, inicialmente
+        contendrá:
+
+        Nombre:
+
+        Después, PerfilController invocará:
+
+        controller.cargarDatos(...);
+
+        Ese método ejecutará:
+
+        lblNombre.setText(
+            "Nombre: " + nombre
+        );
+
+        Por ejemplo, si el usuario se llama Ana,
+        la etiqueta mostrará:
+
+        Nombre: Ana
+    -->
     <Label fx:id="lblNombre"
            text="Nombre:"/>
 
+
+    <!--
+        ETIQUETA DEL CORREO ELECTRÓNICO
+        --------------------------------
+
+        fx:id="lblEmail":
+            Conecta este Label con el atributo:
+
+            @FXML
+            private Label lblEmail;
+
+            de ResumenController.java.
+
+        text="Email:":
+            Define el texto inicial.
+
+        Cuando se llama al método cargarDatos(),
+        el controlador ejecuta:
+
+        lblEmail.setText(
+            "Email: " + email
+        );
+
+        Ejemplo:
+
+        Si email contiene:
+
+        ana@ejemplo.com
+
+        el texto visible será:
+
+        Email: ana@ejemplo.com
+
+        Observa que la información no se obtiene
+        directamente de un TextField en esta pantalla.
+
+        La segunda ventana recibe los datos
+        a través de su controlador.
+    -->
     <Label fx:id="lblEmail"
            text="Email:"/>
 
+
+    <!--
+        ETIQUETA DE PREFERENCIAS
+        -----------------------
+
+        fx:id="lblPreferencias":
+            Conecta esta etiqueta con:
+
+            @FXML
+            private Label lblPreferencias;
+
+            definido en ResumenController.java.
+
+        text="Preferencias:":
+            Establece el texto inicial.
+
+        Cuando se llama a cargarDatos(),
+        el controlador ejecuta:
+
+        lblPreferencias.setText(
+            "Preferencias: " + preferencias
+        );
+
+        Ejemplo:
+
+        Si el usuario ha seleccionado Java y JavaFX,
+        la variable preferencias puede contener:
+
+        "Java JavaFX"
+
+        La etiqueta mostrará:
+
+        Preferencias: Java JavaFX
+
+        Si el usuario no seleccionó ninguna casilla,
+        la cadena preferencias puede estar vacía.
+
+        En ese caso aparecerá únicamente:
+
+        Preferencias:
+
+        Esta etiqueta solamente muestra información.
+        No permite modificar las preferencias.
+    -->
     <Label fx:id="lblPreferencias"
            text="Preferencias:"/>
 
+
+    <!--
+        BOTÓN CERRAR
+        ------------
+
+        Button:
+            Crea un botón que el usuario puede pulsar.
+
+        text="Cerrar":
+            Define el texto visible del botón.
+
+        onAction="#cerrarVentana":
+            Conecta el evento de acción del botón
+            con un método del controlador.
+
+        El símbolo # indica que el nombre siguiente
+        corresponde a un método del controlador
+        definido en fx:controller.
+
+        En ResumenController.java tenemos:
+
+        @FXML
+        private void cerrarVentana() {
+            ...
+        }
+
+        Cuando el usuario pulsa este botón,
+        JavaFX ejecuta cerrarVentana().
+
+
+        ¿QUÉ HACE cerrarVentana()?
+        -------------------------
+
+        Primero obtiene la ventana actual:
+
+        Stage stage =
+            (Stage) lblNombre
+                .getScene()
+                .getWindow();
+
+        Después la cierra:
+
+        stage.close();
+
+        IMPORTANTE:
+
+        Este botón cierra la ventana del resumen.
+
+        No cierra directamente la ventana principal
+        del formulario.
+
+        La primera ventana podrá seguir abierta.
+
+
+        ¿POR QUÉ NO NECESITA fx:id?
+        --------------------------
+
+        Porque el controlador no necesita
+        guardar una referencia al botón.
+
+        Solamente necesitamos que, al pulsarlo,
+        se ejecute el método cerrarVentana().
+
+        Para eso basta con onAction.
+    -->
     <Button text="Cerrar"
             onAction="#cerrarVentana"/>
 
+
+    <!--
+        FIN DEL VBox
+        ------------
+
+        Cerramos el contenedor principal.
+
+        Todos los elementos anteriores pertenecen
+        a este VBox.
+
+        Al cargar el archivo con FXMLLoader,
+        se creará un árbol de objetos JavaFX
+        equivalente a esta estructura.
+    -->
 </VBox>

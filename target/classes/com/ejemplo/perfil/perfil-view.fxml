@@ -1,39 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- Importamos las clases necesarias para construir la interfaz. -->
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
 
+<!--
+    VBox es el contenedor raíz de la interfaz.
+
+    xmlns:fx:
+        Declara el espacio de nombres de FXML.
+
+    fx:controller:
+        Identifica la clase Java que controla esta pantalla.
+
+    alignment="CENTER":
+        Centra los elementos dentro del VBox.
+
+    spacing="15":
+        Establece 15 píxeles entre elementos consecutivos.
+
+    styleClass="contenedor":
+        Aplica la clase CSS .contenedor.
+-->
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.ejemplo.perfil.PerfilController"
       alignment="CENTER"
       spacing="15"
       styleClass="contenedor">
 
+    <!--
+        padding define el espacio interior del VBox.
+
+        Insets establece:
+        - 30 píxeles arriba.
+        - 40 píxeles a la derecha.
+        - 30 píxeles abajo.
+        - 40 píxeles a la izquierda.
+
+        No debemos confundir padding con spacing:
+        padding separa el contenido de los bordes;
+        spacing separa los elementos entre sí.
+    -->
     <padding>
-        <Insets top="30" right="40" bottom="30" left="40"/>
+        <Insets top="30"
+                right="40"
+                bottom="30"
+                left="40"/>
     </padding>
 
-    <Label text="Mi perfil" styleClass="titulo"/>
+    <!--
+        Título principal del formulario.
 
+        Label crea una etiqueta de texto.
+        styleClass="titulo" aplica estilos desde CSS.
+
+        No necesita fx:id porque el controlador
+        no accede directamente a este Label.
+    -->
+    <Label text="Mi perfil"
+           styleClass="titulo"/>
+
+    <!--
+        Campo del nombre.
+
+        El Label describe el campo siguiente.
+
+        fx:id="txtNombre" conecta el TextField
+        con el atributo txtNombre de PerfilController.
+
+        promptText muestra una indicación mientras
+        el campo está vacío; no es el valor del campo.
+    -->
     <Label text="Nombre:"/>
-    <TextField fx:id="txtNombre" promptText="Introduce tu nombre"/>
 
+    <TextField fx:id="txtNombre"
+               promptText="Introduce tu nombre"/>
+
+    <!--
+        Campo del correo electrónico.
+
+        fx:id="txtEmail" conecta este TextField
+        con el atributo txtEmail del controlador.
+
+        TextField permite introducir texto, pero
+        no valida automáticamente el formato del correo.
+    -->
     <Label text="Correo electrónico:"/>
-    <TextField fx:id="txtEmail" promptText="ejemplo@correo.com"/>
 
+    <TextField fx:id="txtEmail"
+               promptText="ejemplo@correo.com"/>
+
+    <!--
+        Título de la sección de preferencias.
+    -->
     <Label text="Selecciona tus preferencias:"/>
 
-    <CheckBox fx:id="checkJava" text="Me gusta Java"/>
-    <CheckBox fx:id="checkJavaFX" text="Me gusta JavaFX"/>
+    <!--
+        Primera casilla de verificación.
 
+        fx:id="checkJava" la conecta con PerfilController.
+
+        Desde Java podemos consultar su estado mediante:
+        checkJava.isSelected()
+
+        Devuelve true si está marcada y false si no lo está.
+    -->
+    <CheckBox fx:id="checkJava"
+              text="Me gusta Java"/>
+
+    <!--
+        Segunda casilla de verificación.
+
+        Es independiente de la primera:
+        el usuario puede marcar ambas casillas.
+    -->
+    <CheckBox fx:id="checkJavaFX"
+              text="Me gusta JavaFX"/>
+
+    <!--
+        Botón Guardar perfil.
+
+        onAction="#guardarPerfil" conecta el botón
+        con el método guardarPerfil() de PerfilController.
+
+        El símbolo # hace referencia a un método
+        del controlador indicado en fx:controller.
+
+        styleClass="boton" aplica la clase CSS .boton.
+    -->
     <Button text="Guardar perfil"
             onAction="#guardarPerfil"
             styleClass="boton"/>
 
+    <!--
+        Botón Limpiar.
+
+        Cuando el usuario lo pulsa, JavaFX invoca
+        el método limpiarFormulario() del controlador.
+
+        Ese método borra los campos de texto,
+        desmarca las casillas y limpia el mensaje.
+    -->
     <Button text="Limpiar"
             onAction="#limpiarFormulario"/>
 
+    <!--
+        Etiqueta de resultado.
+
+        fx:id="lblResultado":
+            La conecta con el controlador.
+
+        text="":
+            Inicialmente no muestra ningún mensaje.
+
+        wrapText="true":
+            Permite mostrar textos en varias líneas.
+
+        styleClass="resultado":
+            Aplica estilos definidos en CSS.
+
+        Desde Java se puede modificar mediante:
+        lblResultado.setText("Mensaje");
+    -->
     <Label fx:id="lblResultado"
            text=""
            wrapText="true"
