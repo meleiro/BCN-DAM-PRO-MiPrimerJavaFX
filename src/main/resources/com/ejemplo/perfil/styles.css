@@ -1,24 +1,451 @@
+
+/*
+ * ARCHIVO styles.css
+ * ==================
+ *
+ * CSS significa Cascading Style Sheets,
+ * es decir, hojas de estilo en cascada.
+ *
+ * JavaFX utiliza una variante de CSS para
+ * personalizar la apariencia de sus controles.
+ *
+ * No todas las propiedades del CSS utilizado
+ * en páginas web funcionan en JavaFX.
+ *
+ * Muchas propiedades específicas de JavaFX
+ * comienzan con el prefijo:
+ *
+ * -fx-
+ *
+ * Por ejemplo:
+ *
+ * -fx-font-size
+ * -fx-background-color
+ * -fx-padding
+ *
+ *
+ * ESTRUCTURA DE UNA REGLA CSS
+ * ---------------------------
+ *
+ * selector {
+ *     propiedad: valor;
+ * }
+ *
+ * selector:
+ *     Indica a qué elementos se aplica el estilo.
+ *
+ * propiedad:
+ *     Indica qué característica queremos modificar.
+ *
+ * valor:
+ *     Indica el nuevo valor de esa característica.
+ *
+ * Las llaves { } contienen las declaraciones
+ * que forman una regla CSS.
+ *
+ * Cada declaración termina normalmente con ;
+ */
+
+
+/*
+ * ESTILO DEL CONTENEDOR PRINCIPAL
+ * -------------------------------
+ *
+ * .contenedor
+ * -----------
+ *
+ * El punto inicial indica que estamos utilizando
+ * un SELECTOR DE CLASE CSS.
+ *
+ * Esta regla se aplicará a los elementos JavaFX
+ * que tengan asignada la clase CSS "contenedor".
+ *
+ * En perfil-view.fxml tenemos:
+ *
+ * <VBox styleClass="contenedor">
+ *
+ * Por tanto, esta regla afectará al VBox
+ * principal del formulario.
+ *
+ * IMPORTANTE:
+ *
+ * La palabra "contenedor" no es una clase Java.
+ *
+ * Es el nombre de una clase de estilo CSS.
+ */
 .contenedor {
+
+    /*
+     * -fx-background-color
+     * --------------------
+     *
+     * Establece el color de fondo del contenedor.
+     *
+     * #f4f6f8 es un color expresado
+     * mediante notación hexadecimal.
+     *
+     * En este formato:
+     *
+     * #RRGGBB
+     *
+     * RR = cantidad de rojo.
+     * GG = cantidad de verde.
+     * BB = cantidad de azul.
+     *
+     * Cada componente utiliza dos dígitos
+     * hexadecimales, desde 00 hasta FF.
+     *
+     * En nuestro caso:
+     *
+     * Rojo:  F4 = 244
+     * Verde: F6 = 246
+     * Azul:  F8 = 248
+     *
+     * El resultado es un gris muy claro,
+     * ligeramente azulado.
+     *
+     * Esta propiedad afecta al fondo del VBox,
+     * no directamente al fondo de toda la ventana.
+     */
     -fx-background-color: #f4f6f8;
+
 }
 
+
+/*
+ * ESTILO DE LOS TÍTULOS
+ * ---------------------
+ *
+ * .titulo
+ * -------
+ *
+ * Este selector se aplica a los elementos
+ * que tengan la clase CSS "titulo".
+ *
+ * En perfil-view.fxml tenemos:
+ *
+ * <Label text="Mi perfil"
+ *        styleClass="titulo"/>
+ *
+ * En resumen-view.fxml tenemos:
+ *
+ * <Label text="Resumen del perfil"
+ *        styleClass="titulo"/>
+ *
+ * Por tanto, ambos títulos pueden compartir
+ * la misma apariencia.
+ *
+ * Para que se aplique el estilo, la hoja CSS
+ * debe estar cargada en la escena correspondiente.
+ */
 .titulo {
+
+    /*
+     * TAMAÑO DE LA FUENTE
+     * -------------------
+     *
+     * -fx-font-size: 26px;
+     *
+     * Establece el tamaño de la letra
+     * en 26 píxeles.
+     *
+     * px significa píxeles.
+     *
+     * Un valor mayor produce un texto
+     * visualmente más grande.
+     *
+     * Por ejemplo:
+     *
+     * 12px -> texto pequeño.
+     * 16px -> texto mediano.
+     * 26px -> texto grande.
+     *
+     * En nuestro caso utilizamos 26px
+     * para destacar el título del formulario.
+     */
     -fx-font-size: 26px;
+
+
+    /*
+     * GROSOR DE LA FUENTE
+     * -------------------
+     *
+     * -fx-font-weight: bold;
+     *
+     * Indica que queremos mostrar
+     * el texto en negrita.
+     *
+     * bold significa negrita.
+     *
+     * También podemos utilizar valores
+     * como normal o determinados pesos numéricos,
+     * según las posibilidades de la fuente.
+     *
+     * La negrita ayuda a diferenciar
+     * el título del resto del contenido.
+     */
     -fx-font-weight: bold;
+
 }
 
+
+/*
+ * ESTILO DE LOS CAMPOS DE TEXTO
+ * -----------------------------
+ *
+ * .text-field
+ * -----------
+ *
+ * Este selector es diferente de los anteriores.
+ *
+ * No es una clase CSS inventada por nosotros.
+ *
+ * "text-field" es una clase de estilo
+ * que JavaFX asigna automáticamente
+ * a los controles TextField.
+ *
+ * Por eso esta regla puede aplicarse
+ * a los campos de texto sin escribir:
+ *
+ * styleClass="text-field"
+ *
+ * en el archivo FXML.
+ *
+ * En nuestra aplicación afecta a:
+ *
+ * - txtNombre.
+ * - txtEmail.
+ *
+ * También podría afectar a otros TextField
+ * de la misma escena.
+ *
+ * IMPORTANTE:
+ *
+ * En CSS, los nombres distinguen
+ * entre mayúsculas y minúsculas.
+ */
 .text-field {
+
+    /*
+     * ANCHO PREFERIDO
+     * ---------------
+     *
+     * -fx-pref-width: 300px;
+     *
+     * Establece el ancho preferido
+     * del control en 300 píxeles.
+     *
+     * El término pref procede de preferred.
+     *
+     * IMPORTANTE:
+     *
+     * Un ancho preferido no significa
+     * necesariamente un ancho fijo.
+     *
+     * Los contenedores de JavaFX pueden
+     * modificar el tamaño real de un control
+     * según sus reglas de distribución,
+     * las restricciones disponibles y el espacio.
+     *
+     * Por tanto, 300px es una preferencia
+     * que JavaFX intentará respetar.
+     *
+     * Si quisiéramos limitar estrictamente
+     * el tamaño, tendríamos que estudiar
+     * también las propiedades de tamaño
+     * mínimo y máximo.
+     */
     -fx-pref-width: 300px;
+
+
+    /*
+     * TAMAÑO DE LA FUENTE
+     * -------------------
+     *
+     * -fx-font-size: 14px;
+     *
+     * Establece el tamaño del texto
+     * de los TextField en 14 píxeles.
+     *
+     * Afecta al texto que escribe el usuario
+     * y normalmente también al texto de ayuda
+     * mostrado mediante promptText.
+     */
     -fx-font-size: 14px;
+
 }
 
+
+/*
+ * ESTILO DEL BOTÓN PRINCIPAL
+ * --------------------------
+ *
+ * .boton
+ * ------
+ *
+ * Este selector se aplica a los controles
+ * que tengan asignada la clase CSS "boton".
+ *
+ * En perfil-view.fxml tenemos:
+ *
+ * <Button text="Guardar perfil"
+ *         onAction="#guardarPerfil"
+ *         styleClass="boton"/>
+ *
+ * Por tanto, esta regla personaliza
+ * el botón Guardar perfil.
+ *
+ * El botón Limpiar no tiene asignada
+ * esta clase CSS en nuestro FXML.
+ *
+ * Por eso no recibirá automáticamente
+ * estas propiedades de la regla .boton.
+ */
 .boton {
+
+    /*
+     * TAMAÑO DE LA FUENTE
+     * -------------------
+     *
+     * -fx-font-size: 15px;
+     *
+     * Establece el tamaño del texto
+     * del botón en 15 píxeles.
+     *
+     * Es ligeramente mayor que el tamaño
+     * de los campos de texto, que utilizan 14px.
+     */
     -fx-font-size: 15px;
+
+
+    /*
+     * TEXTO EN NEGRITA
+     * ----------------
+     *
+     * -fx-font-weight: bold;
+     *
+     * Hace que el texto del botón
+     * aparezca en negrita.
+     *
+     * Esto ayuda a destacar
+     * la acción principal del formulario.
+     */
     -fx-font-weight: bold;
+
+
+    /*
+     * ESPACIO INTERIOR DEL BOTÓN
+     * -------------------------
+     *
+     * -fx-padding: 10px 25px;
+     *
+     * padding significa espacio interior.
+     *
+     * En este caso utilizamos dos valores:
+     *
+     * 10px 25px
+     *
+     * Cuando se indican dos valores:
+     *
+     * Primer valor:
+     *     Espacio superior e inferior.
+     *
+     * Segundo valor:
+     *     Espacio izquierdo y derecho.
+     *
+     * Por tanto:
+     *
+     * Arriba:    10 píxeles.
+     * Derecha:   25 píxeles.
+     * Abajo:     10 píxeles.
+     * Izquierda: 25 píxeles.
+     *
+     * El resultado es un botón más amplio,
+     * con espacio alrededor del texto.
+     *
+     * IMPORTANTE:
+     *
+     * padding no es lo mismo que spacing.
+     *
+     * padding:
+     *     Espacio dentro del control.
+     *
+     * spacing:
+     *     Separación entre los elementos
+     *     de un contenedor como VBox.
+     */
     -fx-padding: 10px 25px;
+
 }
 
+
+/*
+ * ESTILO DE LOS MENSAJES DE RESULTADO
+ * -----------------------------------
+ *
+ * .resultado
+ * ----------
+ *
+ * Este selector se aplica a los controles
+ * con la clase CSS "resultado".
+ *
+ * En perfil-view.fxml tenemos:
+ *
+ * <Label fx:id="lblResultado"
+ *        text=""
+ *        wrapText="true"
+ *        styleClass="resultado"/>
+ *
+ * Esta etiqueta se utiliza para mostrar
+ * mensajes de validación.
+ *
+ * Por ejemplo:
+ *
+ * "Debes introducir nombre y correo electrónico."
+ *
+ * El estilo definido aquí afectará
+ * a la apariencia de esa etiqueta.
+ */
 .resultado {
+
+    /*
+     * TAMAÑO DEL TEXTO
+     * ----------------
+     *
+     * -fx-font-size: 14px;
+     *
+     * Establece el tamaño de letra
+     * de la etiqueta en 14 píxeles.
+     *
+     * Es el mismo tamaño que utilizamos
+     * para los campos de texto.
+     */
     -fx-font-size: 14px;
+
+
+    /*
+     * ESPACIO INTERIOR DE LA ETIQUETA
+     * -------------------------------
+     *
+     * -fx-padding: 15px;
+     *
+     * Cuando padding recibe un único valor,
+     * ese valor se aplica a los cuatro lados.
+     *
+     * En nuestro caso:
+     *
+     * Arriba:    15 píxeles.
+     * Derecha:   15 píxeles.
+     * Abajo:     15 píxeles.
+     * Izquierda: 15 píxeles.
+     *
+     * Esto crea espacio interior alrededor
+     * del texto mostrado en la etiqueta.
+     *
+     * Aunque lblResultado esté vacío,
+     * el padding puede seguir ocupando espacio
+     * dentro del diseño del formulario.
+     */
     -fx-padding: 15px;
+
 }
