@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.ejemplo.perfil.PerfilController"
+      alignment="CENTER"
+      spacing="15"
+      styleClass="contenedor">
+
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <Label text="Mi perfil" styleClass="titulo"/>
+
+    <Label text="Nombre:"/>
+    <TextField fx:id="txtNombre" promptText="Introduce tu nombre"/>
+
+    <Label text="Correo electrónico:"/>
+    <TextField fx:id="txtEmail" promptText="ejemplo@correo.com"/>
+
+    <Label text="Selecciona tus preferencias:"/>
+
+    <CheckBox fx:id="checkJava" text="Me gusta Java"/>
+    <CheckBox fx:id="checkJavaFX" text="Me gusta JavaFX"/>
+
+    <Button text="Guardar perfil"
+            onAction="#guardarPerfil"
+            styleClass="boton"/>
+
+    <Button text="Limpiar"
+            onAction="#limpiarFormulario"/>
+
+    <Label fx:id="lblResultado"
+           text=""
+           wrapText="true"
+           styleClass="resultado"/>
+
+</VBox>

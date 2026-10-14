@@ -1,0 +1,24 @@
+.contenedor {
+    -fx-background-color: #f4f6f8;
+}
+
+.titulo {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+}
+
+.text-field {
+    -fx-pref-width: 300px;
+    -fx-font-size: 14px;
+}
+
+.boton {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 25px;
+}
+
+.resultado {
+    -fx-font-size: 14px;
+    -fx-padding: 15px;
+}

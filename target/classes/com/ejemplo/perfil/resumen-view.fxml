@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.ejemplo.perfil.ResumenController"
+      alignment="CENTER"
+      spacing="20">
+
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <Label text="Resumen del perfil"
+           styleClass="titulo"/>
+
+    <Label fx:id="lblNombre"
+           text="Nombre:"/>
+
+    <Label fx:id="lblEmail"
+           text="Email:"/>
+
+    <Label fx:id="lblPreferencias"
+           text="Preferencias:"/>
+
+    <Button text="Cerrar"
+            onAction="#cerrarVentana"/>
+
+</VBox>
